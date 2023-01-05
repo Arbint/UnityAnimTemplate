@@ -39,7 +39,7 @@ ModelImporter:
       name: jumpApex
       takeName: Unreal Take
       internalID: 0
-      firstFrame: 0
+      firstFrame: 5.1
       lastFrame: 10
       wrapMode: 0
       orientationOffsetY: 0
