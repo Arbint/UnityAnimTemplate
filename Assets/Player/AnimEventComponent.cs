@@ -27,14 +27,15 @@ public class AnimEventComponent : MonoBehaviour
     }
     private void GenerateData()
     {
-        running = movmentComp.Velocity.magnitude > 0;
+        Vector3 vel = movmentComp.Velocity;
+        vel.y = 0;
+        running = vel.magnitude > 0;
         bool prevOnGround = onGround;
         onGround = groundChecker.IsOnGround();
         if(onGround && !prevOnGround)
         {
             animator.SetTrigger("landed");
         }
-        running = running && onGround;
     }
     private void UpdateAnimation()
     {
