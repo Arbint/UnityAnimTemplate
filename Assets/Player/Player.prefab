@@ -162,9 +162,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14e59e530f6db44dabfe4dd6f603dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 20
+  MoveMaxSpeed: 20
+  MoveAcceleration: 15
+  MoveDecceleration: 80
+  MoveAirDecceleration: 10
   BodyRotateSpeed: 20
-  jumpSpeed: 12
+  jumpSpeed: 8
 --- !u!114 &5401195576109105114
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,7 +10,10 @@ public class MovmentComponent : MonoBehaviour
 
     PlayerInput playerInput;
     Vector2 moveInput;
-    [SerializeField] float MoveSpeed = 20f;
+    [SerializeField] float MoveMaxSpeed = 20f;
+    [SerializeField] float MoveAcceleration = 15f;
+    [SerializeField] float MoveDecceleration = 20f;
+    [SerializeField] float MoveAirDecceleration = 5f;
     [SerializeField] float BodyRotateSpeed = 20f;
     [SerializeField] float jumpSpeed = 3f;
     
@@ -19,7 +22,7 @@ public class MovmentComponent : MonoBehaviour
     GroundChecker groundChecker;
 
     float verticalSpeed = 0;
-    
+    float MoveSpeed = 0;
     public Vector3 MoveDir {get; private set; }
 
     Vector3 previousLoc;
@@ -36,6 +39,12 @@ public class MovmentComponent : MonoBehaviour
         groundChecker = GetComponent<GroundChecker>();
         previousLoc = transform.position;
     }
+
+    internal Vector2 GetMovementInput()
+    {
+        return moveInput;
+    }
+
     private void ProcessMoveInput(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         moveInput = obj.ReadValue<Vector2>();
@@ -53,9 +62,30 @@ public class MovmentComponent : MonoBehaviour
     private void Update()
     {
         CalculateMoveDir();
+        CalculateMoveSpeed();
         ProcessMovement();
         ProcessBodyRotation();
         CalculateVel();
+    }
+
+    private void CalculateMoveSpeed()
+    {
+        if(moveInput.magnitude > 0)
+        {
+            MoveSpeed += Time.deltaTime * MoveAcceleration;
+        }
+        else
+        {
+            if(groundChecker.IsOnGround())
+            {
+                MoveSpeed -= Time.deltaTime * MoveDecceleration;
+            }
+            else
+            {
+                MoveSpeed -= Time.deltaTime * MoveAirDecceleration;
+            }
+        }
+        MoveSpeed = Mathf.Clamp(MoveSpeed, 0, MoveMaxSpeed);
     }
 
     private void CalculateVel()
@@ -69,7 +99,14 @@ public class MovmentComponent : MonoBehaviour
     {
         Vector3 FaceDir = cameraController.GetFlatForwardDir();
         Vector3 RightDir = cameraController.GetRightDir();
-        MoveDir = (FaceDir * moveInput.y + RightDir * moveInput.x).normalized;
+        if(moveInput.magnitude > 0)
+        {
+            MoveDir = (FaceDir * moveInput.y + RightDir * moveInput.x).normalized;
+        }
+        else
+        {
+            MoveDir = MoveSpeed > 0 ? MoveDir : Vector3.zero;
+        }
     }
 
     private void ProcessBodyRotation()
