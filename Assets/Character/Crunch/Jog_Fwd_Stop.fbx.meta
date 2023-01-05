@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 7313a9575e04c804e92f1f9fb80fd6b4
+guid: 94956e683f4e07e4faf0ed809794c5ec
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
       74: 8993902097722301239
-    second: jogFwd
+    second: JogStop
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,18 +36,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: jogFwd
+      name: JogStop
       takeName: Unreal Take
       internalID: 0
-      firstFrame: 0
-      lastFrame: 28
+      firstFrame: 20
+      lastFrame: 110
       wrapMode: 0
-      orientationOffsetY: -10
+      orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1

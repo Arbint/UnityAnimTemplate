@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class MovmentComponent : MonoBehaviour
 {
+    public bool OnGround { get; private set; }
+    public Vector3 Velocity { get; private set; }
+
     PlayerInput playerInput;
     Vector2 moveInput;
     [SerializeField] float MoveSpeed = 20f;
@@ -14,9 +17,12 @@ public class MovmentComponent : MonoBehaviour
     CharacterController characterController;
     CameraController cameraController;
     GroundChecker groundChecker;
+
     float verticalSpeed = 0;
     
     public Vector3 MoveDir {get; private set; }
+
+    Vector3 previousLoc;
 
     private void Start()
     {
@@ -28,6 +34,7 @@ public class MovmentComponent : MonoBehaviour
         cameraController = GetComponent<CameraController>();
         characterController = GetComponent<CharacterController>();
         groundChecker = GetComponent<GroundChecker>();
+        previousLoc = transform.position;
     }
     private void ProcessMoveInput(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
@@ -39,6 +46,7 @@ public class MovmentComponent : MonoBehaviour
         if(groundChecker.IsOnGround())
         {
             verticalSpeed = jumpSpeed;
+            OnGround = true;
         }
     }
 
@@ -47,6 +55,14 @@ public class MovmentComponent : MonoBehaviour
         CalculateMoveDir();
         ProcessMovement();
         ProcessBodyRotation();
+        CalculateVel();
+    }
+
+    private void CalculateVel()
+    {
+        Vector3 locDelta = transform.position - previousLoc;
+        Velocity = locDelta / Time.deltaTime;
+        previousLoc = transform.position;
     }
 
     private void CalculateMoveDir()
@@ -73,7 +89,9 @@ public class MovmentComponent : MonoBehaviour
         }
         if(!groundChecker.IsOnGround())
         {
+            OnGround = false;
             verticalSpeed -= Physics.gravity.magnitude * Time.deltaTime;
         }
     }
+
 }
