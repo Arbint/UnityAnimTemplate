@@ -93,10 +93,14 @@ public class AnimEventComponent : MonoBehaviour
         {
             animator.SetTrigger("landed");
         }
+
+        if(prevOnGround && !onGround)
+        {
+            animator.SetTrigger("jump");
+        }
     }
     private void UpdateAnimation()
     {
-        animator.SetBool("inAir", !onGround);
         animator.SetBool("running", running);
     }
 
