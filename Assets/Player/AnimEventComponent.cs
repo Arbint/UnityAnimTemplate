@@ -38,6 +38,18 @@ public class AnimEventComponent : MonoBehaviour
         movmentComp = GetComponent<MovmentComponent>();
         groundChecker = GetComponent<GroundChecker>();
         InputManager.GetPlayerInput().Gameplay.Combo.performed += ComboBtnClicked;
+        InputManager.GetPlayerInput().Gameplay.Emote.performed += DoEmote;
+        InputManager.GetPlayerInput().Gameplay.Death.performed += DoDeath;
+    }
+
+    private void DoDeath(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        animator.SetTrigger("die");
+    }
+
+    private void DoEmote(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        animator.SetTrigger("emote");
     }
 
     private void ComboBtnClicked(UnityEngine.InputSystem.InputAction.CallbackContext obj)
