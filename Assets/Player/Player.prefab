@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f05866edeeaedf4f93951d9be4f5bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Note: 
 --- !u!143 &7348915249132567421
 CharacterController:
   m_ObjectHideFlags: 0
@@ -198,13 +199,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combos:
-  - {fileID: 8993902097722301239, guid: c3e8edc7c87d2504b91a048a01a87eba, type: 3}
-  - {fileID: 8993902097722301239, guid: d4ea1ef6125140d4081fdb6af0c68ec2, type: 3}
-  - {fileID: 8993902097722301239, guid: fa03ef1b4b00cf641aebb05d179cf0ab, type: 3}
-  - {fileID: 8993902097722301239, guid: e697a9a6ac30ebd4f99f34004e1a63bf, type: 3}
+  - comboClip: {fileID: 8993902097722301239, guid: c3e8edc7c87d2504b91a048a01a87eba,
+      type: 3}
+    comboClearWaitTime: 1.5
+  - comboClip: {fileID: 8993902097722301239, guid: d4ea1ef6125140d4081fdb6af0c68ec2,
+      type: 3}
+    comboClearWaitTime: 1.5
+  - comboClip: {fileID: 8993902097722301239, guid: fa03ef1b4b00cf641aebb05d179cf0ab,
+      type: 3}
+    comboClearWaitTime: 1.5
+  - comboClip: {fileID: 8993902097722301239, guid: e697a9a6ac30ebd4f99f34004e1a63bf,
+      type: 3}
+    comboClearWaitTime: 1.5
   comboOverrideOrigionalClip: {fileID: 8993902097722301239, guid: c3e8edc7c87d2504b91a048a01a87eba,
     type: 3}
-  comboClearWaitTime: 1.5
 --- !u!95 &-693224737497355230
 Animator:
   serializedVersion: 4
