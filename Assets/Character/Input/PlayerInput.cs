@@ -71,6 +71,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Combo"",
+                    ""type"": ""Button"",
+                    ""id"": ""c593e7ab-7ebf-4736-8b4b-ddab7890ef17"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +181,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""97997ab4-2d0b-4af1-9b6b-7fc34237a161"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Combo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -185,6 +205,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Gameplay_Death = m_Gameplay.FindAction("Death", throwIfNotFound: true);
         m_Gameplay_Emote = m_Gameplay.FindAction("Emote", throwIfNotFound: true);
         m_Gameplay_Look = m_Gameplay.FindAction("Look", throwIfNotFound: true);
+        m_Gameplay_Combo = m_Gameplay.FindAction("Combo", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -249,6 +270,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Death;
     private readonly InputAction m_Gameplay_Emote;
     private readonly InputAction m_Gameplay_Look;
+    private readonly InputAction m_Gameplay_Combo;
     public struct GameplayActions
     {
         private @PlayerInput m_Wrapper;
@@ -258,6 +280,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Death => m_Wrapper.m_Gameplay_Death;
         public InputAction @Emote => m_Wrapper.m_Gameplay_Emote;
         public InputAction @Look => m_Wrapper.m_Gameplay_Look;
+        public InputAction @Combo => m_Wrapper.m_Gameplay_Combo;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -282,6 +305,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Look.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLook;
+                @Combo.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCombo;
+                @Combo.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCombo;
+                @Combo.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCombo;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -301,6 +327,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
+                @Combo.started += instance.OnCombo;
+                @Combo.performed += instance.OnCombo;
+                @Combo.canceled += instance.OnCombo;
             }
         }
     }
@@ -312,5 +341,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnDeath(InputAction.CallbackContext context);
         void OnEmote(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+        void OnCombo(InputAction.CallbackContext context);
     }
 }

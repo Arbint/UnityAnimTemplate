@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 4136.293, g: 4151.4062, b: 5817.6953, a: 1}
+  m_IndirectSpecularColor: {r: 4136.1875, g: 4151.3906, b: 5817.508, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -501,6 +501,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -855870686530863868, guid: 8bcd9c0c96219e846a20f1840f2c7df1,
+        type: 3}
+      propertyPath: combos.Array.data[0].comboClip
+      value: 
+      objectReference: {fileID: 8993902097722301239, guid: c3e8edc7c87d2504b91a048a01a87eba,
+        type: 3}
+    - target: {fileID: -855870686530863868, guid: 8bcd9c0c96219e846a20f1840f2c7df1,
+        type: 3}
+      propertyPath: combos.Array.data[1].comboClip
+      value: 
+      objectReference: {fileID: 8993902097722301239, guid: d4ea1ef6125140d4081fdb6af0c68ec2,
+        type: 3}
+    - target: {fileID: -855870686530863868, guid: 8bcd9c0c96219e846a20f1840f2c7df1,
+        type: 3}
+      propertyPath: combos.Array.data[2].comboClip
+      value: 
+      objectReference: {fileID: 8993902097722301239, guid: fa03ef1b4b00cf641aebb05d179cf0ab,
+        type: 3}
+    - target: {fileID: -855870686530863868, guid: 8bcd9c0c96219e846a20f1840f2c7df1,
+        type: 3}
+      propertyPath: combos.Array.data[3].comboClip
+      value: 
+      objectReference: {fileID: 8993902097722301239, guid: e697a9a6ac30ebd4f99f34004e1a63bf,
+        type: 3}
+    - target: {fileID: -855870686530863868, guid: 8bcd9c0c96219e846a20f1840f2c7df1,
+        type: 3}
+      propertyPath: combos.Array.data[0].comboClearWaitTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -855870686530863868, guid: 8bcd9c0c96219e846a20f1840f2c7df1,
+        type: 3}
+      propertyPath: combos.Array.data[1].comboClearWaitTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -855870686530863868, guid: 8bcd9c0c96219e846a20f1840f2c7df1,
+        type: 3}
+      propertyPath: combos.Array.data[2].comboClearWaitTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -855870686530863868, guid: 8bcd9c0c96219e846a20f1840f2c7df1,
+        type: 3}
+      propertyPath: combos.Array.data[3].comboClearWaitTime
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 812714535730414668, guid: 8bcd9c0c96219e846a20f1840f2c7df1,
         type: 3}
       propertyPath: m_RootOrder
@@ -555,11 +599,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5401195576109105114, guid: 8bcd9c0c96219e846a20f1840f2c7df1,
-        type: 3}
-      propertyPath: groundCheckRadius
-      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7068121179620222438, guid: 8bcd9c0c96219e846a20f1840f2c7df1,
         type: 3}

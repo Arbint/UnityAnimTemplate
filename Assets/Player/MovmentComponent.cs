@@ -57,7 +57,7 @@ public class MovmentComponent : MonoBehaviour
             verticalSpeed = jumpSpeed;
             OnGround = true;
         }
-    }
+       }
 
     private void Update()
     {
